@@ -30,7 +30,7 @@ export default class Translator extends Component {
     const _this = this;
     this.setState({translated:'', translating: true});
     superagent
-    .post('/translate')
+    .post(`/translate`)
     .send(data) // sends a JSON post body
     .set('accept', 'json')
     .end((err, res) => {

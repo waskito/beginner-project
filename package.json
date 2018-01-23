@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "react-scripts start",
+    "dev": "REACT_APP_TRANSLATE_API=$TRANSLATE_API react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
