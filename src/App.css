@@ -1,0 +1,205 @@
+* {
+    margin: 0px;
+}
+
+a:hover{
+  text-decoration: none !important;
+}
+
+body{
+  min-height: 100vh;
+  position: relative;
+  background: rgba(124,175,168,1);
+  background: -moz-linear-gradient(45deg, rgba(124,175,168,1) 0%, rgba(95,133,134,1) 31%, rgba(32,43,61,1) 98%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(124,175,168,1)), color-stop(31%, rgba(95,133,134,1)), color-stop(98%, rgba(32,43,61,1)));
+  background: -webkit-linear-gradient(45deg, rgba(124,175,168,1) 0%, rgba(95,133,134,1) 31%, rgba(32,43,61,1) 98%);
+  background: -o-linear-gradient(45deg, rgba(124,175,168,1) 0%, rgba(95,133,134,1) 31%, rgba(32,43,61,1) 98%);
+  background: -ms-linear-gradient(45deg, rgba(124,175,168,1) 0%, rgba(95,133,134,1) 31%, rgba(32,43,61,1) 98%);
+  background: linear-gradient(45deg, rgba(124,175,168,1) 0%, rgba(95,133,134,1) 31%, rgba(32,43,61,1) 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7cafa8', endColorstr='#202b3d', GradientType=1 );
+}
+
+.container{
+  width: 100%;
+  max-width: 944px;
+}
+
+nav.navbar.navbar-expand-md.navbar-light.bg-faded{
+  /*background-color: rgba(255,255,255,.7);
+  color: black;*/
+}
+
+.content{
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+button {
+    font-family: Roboto;
+    background: #888fa1;
+    color: #fff;
+    width: 17.3%;
+    height: 50px;
+    margin: 10px 6px;
+    font-size: 2.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px 10px 18px 18px;
+    outline: none;
+}
+
+
+.calc-container {
+   width: 100%;
+   margin: auto;
+   padding: 21px;
+   border-radius: 10px;
+   background: #66CC99;
+}
+
+.keyboard-container{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.keyboard-left,.keyboard-right{
+  width: 50%;
+}
+
+.screen {
+   font-family: 'Orbitron';
+   text-align: right;
+   padding: 10px;
+   font-size: 45px;
+   margin: 5px 8px 10px 8px;
+   background: #F2F8EA;
+}
+
+.log {
+    font-family: 'Orbitron';
+    background-color: #F2F8EA;
+    height: 44px;
+    text-align: left;
+    outline: none;
+    width: 100%;
+    border: none;
+    font-size: 1em;
+}
+
+
+
+.sm-button {
+    color: #fff;
+    background: #202742;
+    width: 61.1px;
+    margin: 14px 8px;
+    border-radius: 11px;
+    font-size: 1.3em;
+    height: 41px;
+}
+
+.num-button {
+    background: #fff;
+    color: #202742;
+    width: 17.3%;
+    margin: 14px 2px;
+    border-radius: 11px;
+    font-size: 1.3em;
+    height: 41px;
+}
+.orange-button {
+  background: #EB6B56;
+  color: white;
+}
+
+.description {
+    font-size: 1.5em;
+    font-family: 'Orbitron';
+    margin: 8px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+textarea.form-control,textarea.form-control:focus{
+  background: #F2F8EA;
+  padding: 0.75rem;
+}
+
+h3.arrow{
+  color: #fff;
+}
+
+footer.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+}
+
+.translate-result{
+  background: #CCEBC0;
+  padding: 0.75rem;
+  line-height: 1.4;
+  font-size: 1.1rem;
+  color: #757575;
+}
+
+.content a .jumbotron{
+  max-height: 193px;
+}
+
+.content a .jumbotron h1{
+  font-size: 3rem;
+  color: white;
+  transition: font-size 0.5s ease;
+}
+
+.content a:hover .jumbotron h1{
+  font-size: 4rem;
+}
+
+.jumbotron.jumbo-translator{
+  background: #5C9F97;
+}
+.jumbotron.jumbo-calculator{
+  background: #66CC99;
+}
+.jumbotron.jumbo-converter{
+  background: #91CED7;
+}
+
+.footer .container >hr{
+  border-color: rgba(255,255,255,.7);
+}
+
+.text-red{
+  color: #2CC990;
+}
+
+@media screen and (max-width: 425px){
+  .keyboard-container{
+    flex-direction: column;
+  }
+  .keyboard-left,.keyboard-right{
+    width: 100%;
+  }
+
+  .num-button{
+    font-size: 1em;
+  }
+
+  .content{
+    padding-top: 30px;
+  }
+
+  .content a .jumbotron h1{
+    font-size: 1rem;
+    color: white;
+    transition: font-size 0.5s ease;
+  }
+
+  .content a:hover .jumbotron h1{
+    font-size: 1.2rem;
+  }
+}
