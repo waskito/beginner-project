@@ -37,10 +37,10 @@
 - Akan muncul hasilnya
 
 ### Use Following Libraries / Components:
-- [google-translate-api](https://github.com/matheuss/google-translate-api)
+- [google-translate-api](https://github.com/matheuss/google-translate-api) (Library for using Google Translate API without token)
 - [fixer.io](http://fixer.io/) (API for exchange rates)
 - [money.js](https://github.com/openexchangerates/money.js/) (Manage exchange rates for currency converter)
 - [numeral](https://github.com/adamwdraper/Numeral-js) (For formatting currency result)
-- [moment.js](https://github.com/moment/moment)
-- [local-storage](https://github.com/bevacqua/local-storage/) (Cache currency rates)
-- [react-scientific-calculator](https://github.com/mazury/react-scientific-calculator) (The calculator)
+- [moment.js](https://github.com/moment/moment) (To check latest date of exchange rates from fixer)
+- [local-storage](https://github.com/bevacqua/local-storage/) (Caching currency rates in the browser with localStorage)
+- [react-scientific-calculator](https://github.com/mazury/react-scientific-calculator) (Use it as a component)
