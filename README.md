@@ -1,12 +1,17 @@
-Beginner's Client App
+## Beginner's Client App
 
+[Live Demo](https://beginner-project.herokuapp.com/)
+---
 
-# Pre-installed deps
-- docker
+### How to run without Docker
+- `git clone git@github.com:waskito/beginner-project.git`
+- `cd beginner-project`
+- `npm install`
+- `npm run dev`
 
-# How to run
-- `docker build -t beginner-client .`
-- If no network created: `docker network create net-a`
-- `docker run -itd -p 9000:9000 -e PORT=9000 --network=net-a -e TRANSLATE_API=http://<beginner-translator-ip>:9001 --name=b-client beginner-client`
+### How to run with Docker
+- `docker build -t beginner-project .`
+- `docker run -itd -p 9000:9000 -e PORT=9000 --name=b-pro beginner-project`
+- Open your browser at http://localhost:9000
 
 
