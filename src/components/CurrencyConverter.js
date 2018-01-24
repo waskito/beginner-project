@@ -33,6 +33,7 @@ export default class Translator extends Component {
       .end((err, res) => {
         if (res.status === 200) {
           money.rates = res.body.rates;
+          money.base = res.body.base;
           _this.setState({currencyList: _.transform(res.body.rates, function(result, n,k){
             result.push({
               label: k,
@@ -47,8 +48,9 @@ export default class Translator extends Component {
 
   componentDidMount(){
     const localFixer = ls.get('fixer');
-    if(!_.isEmpty(localFixer) && localFixer.date === moment().subtract(1,'day').format('YYYY-MM-DD')){
+    if(!_.isEmpty(localFixer) && (localFixer.date === moment().subtract(1,'day').format('YYYY-MM-DD') || localFixer.date === moment().format('YYYY-MM-DD'))){
       money.rates = localFixer.rates;
+      money.base = localFixer.base;
       this.setState({currencyList: _.transform(localFixer.rates, function(result, n,k){
             result.push({
               label: k,
