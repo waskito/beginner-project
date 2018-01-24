@@ -31,7 +31,7 @@ export default class Translator extends Component {
     const _this = this;
     this.setState({loading: true})
     superagent
-      .get('https://api.fixer.io/latest?base=USD')
+      .get('https://api.fixer.io/latest?base=TRY')
       .end((err, res) => {
         _this.setState({loading:false})
         if (res.status === 200) {
