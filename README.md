@@ -1,4 +1,4 @@
-## Beginner's Client App
+## Beginner's Project
 
 [Live Demo](https://beginner-project.herokuapp.com/)
 ---
