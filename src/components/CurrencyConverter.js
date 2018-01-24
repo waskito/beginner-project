@@ -31,19 +31,21 @@ export default class Translator extends Component {
     const _this = this;
     this.setState({loading: true})
     superagent
-      .get('https://api.fixer.io/latest?base=TRY')
+      .get('https://api.fixer.io/latest?base=USD')
       .end((err, res) => {
         _this.setState({loading:false})
         if (res.status === 200) {
           money.rates = res.body.rates;
           money.base = res.body.base;
-          _this.setState({currencyList: _.transform(res.body.rates, function(result, n,k){
+          const listAll = _.transform(res.body.rates, function(result, n,k){
             result.push({
               label: k,
               value: k
             })
 
-          },[]) });
+          },[]);
+          listAll.push({label: 'USD', value: 'USD'});
+          _this.setState({currencyList: listAll});
           ls('fixer',res.body)
         }
       })
@@ -54,13 +56,14 @@ export default class Translator extends Component {
     if(!_.isEmpty(localFixer) && (localFixer.date === moment().subtract(1,'day').format('YYYY-MM-DD') || localFixer.date === moment().format('YYYY-MM-DD'))){
       money.rates = localFixer.rates;
       money.base = localFixer.base;
-      this.setState({currencyList: _.transform(localFixer.rates, function(result, n,k){
+      const listAll = _.transform(localFixer.rates, function(result, n,k){
             result.push({
               label: k,
               value: k
             })
           },[])
-          })
+      listAll.push({label: 'USD', value: 'USD'});
+      this.setState({currencyList: listAll })
     }else{
       this.getCurrencies()
     }
