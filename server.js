@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const app = express();
 const translate = require('google-translate-api');
 const bodyParser = require('body-parser');
+
+const app = express();
 
 app
   .use(bodyParser.json())
@@ -32,9 +33,5 @@ app.post('/api/translate', function(req, res){
 app.get(/^\/(?!api).*/, function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-
-
-
-
 
 app.listen(process.env.PORT);
