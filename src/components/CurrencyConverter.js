@@ -113,9 +113,9 @@ export default class Translator extends Component {
             <div className="row">
               <div className="col">
                 <div className="convert-result text-center">
-                  <label htmlFor="result" className="label-converter">{numeral( this.state.to ).format(`0,0`)}</label>
+                  <label htmlFor="result" className="label-converter">{this.state.to}</label>
                   <h1>
-                    {this.state.converted}
+                    {numeral( this.state.converted ).format(`0,0.00`)}
                   </h1>
                 </div>
               </div>
