@@ -146,8 +146,28 @@ footer.footer{
   color: #757575;
 }
 
+.convert-result{
+  background: #CCEBC0;
+  padding: 0.75rem;
+  line-height: 1.4;
+  white-space: pre-line;
+  min-height: 150px;
+  padding: 47px 12px;
+  color: #757575;
+  text-align: center;
+}
+
 .content a .jumbotron{
   max-height: 193px;
+}
+
+.label-converter{
+  position: absolute;
+  left: 8%;
+  top: 25%;
+  font-size: 3rem;
+  color: #6c7e90;
+  opacity: .70;
 }
 
 .content a .jumbotron h1{
@@ -176,6 +196,13 @@ footer.footer{
 
 .text-red{
   color: #2CC990;
+}
+
+input.field-amount,input.field-amount:focus{
+  background-color: #F2F8EA;
+  height: 150px;
+  font-size: 3rem;
+  text-align: center;
 }
 
 @media screen and (max-width: 425px){

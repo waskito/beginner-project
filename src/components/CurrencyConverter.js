@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Select, TextArea } from 'react-form';
-import languageList from './languageList';
+import { Form, Select, Text } from 'react-form';
+import money from 'money';
+import moment from 'moment';
+import * as _ from 'lodash';
+import ls from 'local-storage';
 // import {
 //   Link
 // } from 'react-router-dom';
@@ -14,88 +17,105 @@ export default class Translator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      textFrom: 'I have an Apple',
-      translated: '',
-      translating: false
+      currencyList: [],
+      corverted: 0,
+      from:'',
+      to:''
     };
     this.submitForm = this.submitForm.bind(this);
   }
 
+  getCurrencies(){
+    const _this = this;
+    superagent
+      .get('https://api.fixer.io/latest')
+      .end((err, res) => {
+        if (res.status === 200) {
+          money.rates = res.body.rates;
+          _this.setState({currencyList: _.transform(res.body.rates, function(result, n,k){
+            result.push({
+              label: k,
+              value: k
+            })
+
+          },[]) });
+          ls('fixer',res.body)
+        }
+      })
+  }
+
   componentDidMount(){
+    const localFixer = ls.get('fixer');
+    if(!_.isEmpty(localFixer) && localFixer.date === moment().subtract(1,'day').format('YYYY-MM-DD')){
+      money.rates = localFixer.rates;
+      this.setState({currencyList: _.transform(localFixer.rates, function(result, n,k){
+            result.push({
+              label: k,
+              value: k
+            })
+          },[])
+          })
+    }else{
+      this.getCurrencies()
+    }
   }
 
 
 
   submitForm(data){
-    const _this = this;
-    this.setState({translated:'', translating: true});
-    superagent
-    .post('/translate')
-    .send(data) // sends a JSON post body
-    .set('accept', 'json')
-    .end((err, res) => {
-      if (res.body && res.body.code === 200) {
-        if (_this.refs.translator)
-          _this.setState({translated:res.body.data.text});
-      }
-      _this.setState({translating: false})
-    });
+    this.setState({converted:money.convert(Number(data.amount), {from: data.from, to: data.to}).toFixed(2), to: data.to, from: data.from})
   }
 
   render() {
-    const _this = this;
-    const languagesOptions = languageList();
+    const {currencyList} = this.state;
 
     return (
       <div>
         <div className="hero" ref="translator">
           <Form onSubmit={(data) => this.submitForm(data)}
-                defaultValues={{from:'id',to:'en'}}
+                defaultValues={{from:'USD',to:'IDR', amount: 1}}
              >
             { formApi => (
               <form onSubmit={formApi.submitForm} id="form-translate" className="mb-4">
                   <div className="row">
                     <div className="col">
                       <div className="form-group">
-                        <Select field="from" id="from" className="form-control rounded-0" options={languagesOptions} disabled={_this.state.translating} />
+                        <Select field="from" id="from" className="form-control rounded-0" options={currencyList} />
                       </div>
                     </div>
                     <div className="col" style={{width: "58px", flexGrow:'0'}}><h3 className="arrow">&#8594;</h3></div>
                     <div className="col">
                       <div className="form-group">
-                        <Select field="to" id="to" className="form-control rounded-0" options={languagesOptions} disabled={_this.state.translating} />
+                        <Select field="to" id="to" className="form-control rounded-0" options={currencyList} />
                       </div>
                     </div>
                   </div>
                 <div className="row">
                   <div className="col">
                     <div className="form-group">
-                      <TextArea field="text" id="text" cols="30" rows="10" className="form-control rounded-0" disabled={_this.state.translating} placeholder="Ketik kata / kalimat yang akan di-translate..." />
+                      <label htmlFor="amount" className="label-converter">{formApi.getValue('from')}</label>
+                      <Text field="amount" id="amount" type="tel" className="form-control rounded-0 field-amount" placeholder="1" autoComplete="off" />
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <button className="btn btn-success rounded-0 float-right" style={{minWidth:'200px', backgroundColor:'#66CC99'}} disabled={_this.state.translating} type="submit">
-                      {_this.state.translating &&
-                        <span>Translating....</span>
-                      }
-                      {!_this.state.translating &&
-                        <span>Translate</span>
-                      }
+                    <button className="btn btn-success rounded-0 float-right" style={{minWidth:'200px', backgroundColor:'#66CC99'}} type="submit">
+                        <span>Convert</span>
                     </button>
                   </div>
                 </div>
               </form>
             )}
           </Form>
-          {this.state.translated &&
+          {this.state.converted &&
             <div className="row">
               <div className="col">
-                <div className="translate-result">
-                  <p>
-                    {this.state.translated}
-                  </p>
+                <div className="convert-result text-center">
+                  <label htmlFor="result" className="label-converter">{this.state.to}</label>
+                  <h1>
+                    {this.state.converted}
+                  </h1>
                 </div>
               </div>
             </div>
