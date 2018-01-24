@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Select, Text } from 'react-form';
-import money from 'money';
 import moment from 'moment';
+import money from 'money';
+import numeral from 'numeral';
 import * as _ from 'lodash';
 import ls from 'local-storage';
 // import {
@@ -112,7 +113,7 @@ export default class Translator extends Component {
             <div className="row">
               <div className="col">
                 <div className="convert-result text-center">
-                  <label htmlFor="result" className="label-converter">{this.state.to}</label>
+                  <label htmlFor="result" className="label-converter">{numeral( this.state.to ).format(`0,0`)}</label>
                   <h1>
                     {this.state.converted}
                   </h1>
