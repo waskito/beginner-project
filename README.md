@@ -27,7 +27,7 @@
 
 ### Calculator
 - Tekan angka atau operator yang ingin dicari hasilnya,
-- Tekan tombol sama dengan untuk mendapatkan hasilnya.
+- Tekan tombol `=` untuk mendapatkan hasilnya.
 
 ### Currency Converter
 - Pilih mata uang asal (default USD),
