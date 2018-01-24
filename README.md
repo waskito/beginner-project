@@ -8,8 +8,11 @@
 - `cd beginner-project`
 - `npm install`
 - `npm run dev`
+- Open your browser at http://localhost:3000
 
 ### How to run with Docker
+- `git clone git@github.com:waskito/beginner-project.git`
+- `cd beginner-project`
 - `docker build -t beginner-project .`
 - `docker run -itd -p 9000:9000 -e PORT=9000 --name=b-pro beginner-project`
 - Open your browser at http://localhost:9000
@@ -37,5 +40,7 @@
 - [google-translate-api](https://github.com/matheuss/google-translate-api)
 - [fixer.io](http://fixer.io/) (API for exchange rates)
 - [money.js](https://github.com/openexchangerates/money.js/) (Manage exchange rates for currency converter)
-- [react-scientific-calculator](https://github.com/mazury/react-scientific-calculator)
+- [numeral](https://github.com/adamwdraper/Numeral-js) (For formatting currency result)
 - [moment.js](https://github.com/moment/moment)
+- [local-storage](https://github.com/bevacqua/local-storage/) (Cache currency rates)
+- [react-scientific-calculator](https://github.com/mazury/react-scientific-calculator) (The calculator)
