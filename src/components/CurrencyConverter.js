@@ -29,7 +29,7 @@ export default class Translator extends Component {
   getCurrencies(){
     const _this = this;
     superagent
-      .get('https://api.fixer.io/latest')
+      .get('https://api.fixer.io/latest?base=USD')
       .end((err, res) => {
         if (res.status === 200) {
           money.rates = res.body.rates;
