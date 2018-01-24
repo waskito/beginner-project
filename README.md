@@ -38,7 +38,7 @@
 
 ### Use Following Libraries / Components:
 - [google-translate-api](https://github.com/matheuss/google-translate-api) (Library for using Google Translate API without token)
-- [fixer.io](http://fixer.io/) (API for exchange rates)
+- [fixer.io](http://fixer.io/) (API to get exchange rates)
 - [money.js](https://github.com/openexchangerates/money.js/) (Manage exchange rates for currency converter)
 - [numeral](https://github.com/adamwdraper/Numeral-js) (For formatting currency result)
 - [moment.js](https://github.com/moment/moment) (To check latest date of exchange rates from fixer)
