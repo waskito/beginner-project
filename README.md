@@ -32,3 +32,10 @@
 - Masukkan nominal yang akan di-convert
 - Tekan tombol `Convert`
 - Akan muncul hasilnya
+
+### Use Following Libraries / Components:
+- [google-translate-api](https://github.com/matheuss/google-translate-api)
+- [fixer.io](http://fixer.io/) (API for exchange rates)
+- [money.js](https://github.com/openexchangerates/money.js/) (Manage exchange rates for currency converter)
+- [react-scientific-calculator](https://github.com/mazury/react-scientific-calculator)
+- [moment.js](https://github.com/moment/moment)
