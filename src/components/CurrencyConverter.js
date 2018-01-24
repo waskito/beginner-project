@@ -21,16 +21,19 @@ export default class Translator extends Component {
       currencyList: [],
       corverted: 0,
       from:'',
-      to:''
+      to:'',
+      loading: false
     };
     this.submitForm = this.submitForm.bind(this);
   }
 
   getCurrencies(){
     const _this = this;
+    this.setState({loading: true})
     superagent
       .get('https://api.fixer.io/latest?base=USD')
       .end((err, res) => {
+        _this.setState({loading:false})
         if (res.status === 200) {
           money.rates = res.body.rates;
           money.base = res.body.base;
@@ -83,13 +86,13 @@ export default class Translator extends Component {
                   <div className="row">
                     <div className="col">
                       <div className="form-group">
-                        <Select field="from" id="from" className="form-control rounded-0" options={currencyList} />
+                        <Select field="from" id="from" className="form-control rounded-0" options={currencyList} disabled={this.state.loading} />
                       </div>
                     </div>
                     <div className="col" style={{width: "58px", flexGrow:'0'}}><h3 className="arrow">&#8594;</h3></div>
                     <div className="col">
                       <div className="form-group">
-                        <Select field="to" id="to" className="form-control rounded-0" options={currencyList} />
+                        <Select field="to" id="to" className="form-control rounded-0" options={currencyList} disabled={this.state.loading} />
                       </div>
                     </div>
                   </div>
@@ -97,13 +100,13 @@ export default class Translator extends Component {
                   <div className="col">
                     <div className="form-group">
                       <label htmlFor="amount" className="label-converter">{formApi.getValue('from')}</label>
-                      <Text field="amount" id="amount" type="tel" className="form-control rounded-0 field-amount" placeholder="1" autoComplete="off" />
+                      <Text field="amount" id="amount" type="tel" className="form-control rounded-0 field-amount" disabled={this.state.loading} placeholder="1" autoComplete="off" />
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <button className="btn btn-success rounded-0 float-right" style={{minWidth:'200px', backgroundColor:'#66CC99'}} type="submit">
+                    <button className="btn btn-success rounded-0 float-right" style={{minWidth:'200px', backgroundColor:'#66CC99'}} disabled={this.state.loading} type="submit">
                         <span>Convert</span>
                     </button>
                   </div>
