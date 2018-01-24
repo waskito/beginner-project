@@ -73,7 +73,7 @@ export default class Translator extends Component {
   }
 
   render() {
-    const {currencyList} = this.state;
+    const {currencyList,loading} = this.state;
 
     return (
       <div>
@@ -86,13 +86,13 @@ export default class Translator extends Component {
                   <div className="row">
                     <div className="col">
                       <div className="form-group">
-                        <Select field="from" id="from" className="form-control rounded-0" options={currencyList} disabled={this.state.loading} />
+                        <Select field="from" id="from" className="form-control rounded-0" options={currencyList} disabled={loading} />
                       </div>
                     </div>
                     <div className="col" style={{width: "58px", flexGrow:'0'}}><h3 className="arrow">&#8594;</h3></div>
                     <div className="col">
                       <div className="form-group">
-                        <Select field="to" id="to" className="form-control rounded-0" options={currencyList} disabled={this.state.loading} />
+                        <Select field="to" id="to" className="form-control rounded-0" options={currencyList} disabled={loading} />
                       </div>
                     </div>
                   </div>
@@ -100,13 +100,13 @@ export default class Translator extends Component {
                   <div className="col">
                     <div className="form-group">
                       <label htmlFor="amount" className="label-converter">{formApi.getValue('from')}</label>
-                      <Text field="amount" id="amount" type="tel" className="form-control rounded-0 field-amount" disabled={this.state.loading} placeholder="1" autoComplete="off" />
+                      <Text field="amount" id="amount" type="tel" className="form-control rounded-0 field-amount" disabled={loading} placeholder="1" autoComplete="off" />
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <button className="btn btn-success rounded-0 float-right" style={{minWidth:'200px', backgroundColor:'#66CC99'}} disabled={this.state.loading} type="submit">
+                    <button className="btn btn-success rounded-0 float-right" style={{minWidth:'200px', backgroundColor:'#66CC99'}} disabled={loading} type="submit">
                         <span>Convert</span>
                     </button>
                   </div>
