@@ -9,7 +9,6 @@
     "express": "^4.16.2",
     "google-translate-api": "^2.3.0",
     "he": "^1.1.1",
-    "http-proxy-middleware": "^0.17.4",
     "local-storage": "^1.4.2",
     "mathjs": "^3.13.1",
     "moment": "^2.20.1",
