@@ -29,7 +29,7 @@ export default class App extends Component {
           <footer className="footer">
             <div className="container">
               <hr/>
-              <p className="text-center"><small>Made with <span className="text-red">❤</span> by Beginner</small></p>
+              <p className="text-center"><small>Made with <span className="text-red">❤</span> by Pemula</small></p>
             </div>
           </footer>
         </div>

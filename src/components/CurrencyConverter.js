@@ -31,7 +31,7 @@ export default class Translator extends Component {
     const _this = this;
     this.setState({loading: true})
     superagent
-      .get('https://api.fixer.io/latest?base=USD')
+      .get('http://data.fixer.io/api/latest?access_key=4cdf6712b513324e8ca4c92074010dc2&format=1')
       .end((err, res) => {
         _this.setState({loading:false})
         if (res.status === 200) {
@@ -44,7 +44,7 @@ export default class Translator extends Component {
             })
 
           },[]);
-          listAll.push({label: 'USD', value: 'USD'});
+          listAll.push({label: 'EUR', value: 'EUR'});
           _this.setState({currencyList: listAll});
           ls('fixer',res.body)
         }
@@ -62,7 +62,7 @@ export default class Translator extends Component {
               value: k
             })
           },[])
-      listAll.push({label: 'USD', value: 'USD'});
+      listAll.push({label: 'EUR', value: 'EUR'});
       this.setState({currencyList: listAll })
     }else{
       this.getCurrencies()
@@ -82,7 +82,7 @@ export default class Translator extends Component {
       <div>
         <div className="hero" ref="translator">
           <Form onSubmit={(data) => this.submitForm(data)}
-                defaultValues={{from:'USD',to:'IDR', amount: 1}}
+                defaultValues={{from:'EUR',to:'IDR', amount: 1}}
              >
             { formApi => (
               <form onSubmit={formApi.submitForm} id="form-translate" className="mb-4">
